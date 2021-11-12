@@ -3,7 +3,6 @@ MU Starter Plugin
 Use this repository to create new WordPress plugins for use on the Marshall University WordPress multisite. This repo includes everything needed to get up and running using the Marsha WordPress theme styles.
 
 # Getting Started
-
 1. Clone the repo
 2. Run `npm install` to install the required npm dependencies
 3. Run `composer install` to install the required composer dependencies
