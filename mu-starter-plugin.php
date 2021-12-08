@@ -17,6 +17,6 @@
  * Proper way to enqueue scripts and styles
  */
 function mu_starter_plugin_scripts() {
-	wp_enqueue_style( 'mu-starter-plugin', plugin_dir_path( __FILE__ ) . 'css/mu-starter-plugin.css', '', true );
+	wp_enqueue_style( 'mu-starter-plugin', plugin_dir_url( __FILE__ ) . 'css/mu-starter-plugin.css', '', true );
 }
 add_action( 'wp_enqueue_scripts', 'mu_starter_plugin_scripts' );
