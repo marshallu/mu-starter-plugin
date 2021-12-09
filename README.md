@@ -16,3 +16,6 @@ Use this repository to create new WordPress plugins for use on the Marshall Univ
 - `webpack.mix.js` - You need to update the file names in the mix.postCSS command to match the file names set.
 
 The easiest way to make these updates is to do a search and find and change all `mu-starter-plugin` to your plugin name, for example `mu-profiles` and to do the same for `mu_starter_plugin` you'd replace with `mu_profiles`.
+
+# Settings
+This repo contains a default settings file for VS Code to ensure the code is developed following [WordPress Coding Standards](https://developer.wordpress.org/coding-standards/wordpress-coding-standards/).
