@@ -1,5 +1,10 @@
 <?php
 
+if ( ! file_exists( './mu-starter-plugin.php' ) ) {
+	echo 'This plugin appears to have already been setup.';
+	exit;
+}
+
 echo "Setup starting...\n\n";
 
 echo 'What is the name of your plugin? ';
