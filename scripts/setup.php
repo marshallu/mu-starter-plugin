@@ -10,15 +10,16 @@ echo "Setup starting...\n\n";
 echo 'What is the name of your plugin? ';
 $plugin_name = rtrim( fgets( STDIN ) );
 
-echo 'What is the description of your plugin? ';
+echo "\nWhat is the description of your plugin? ";
 $plugin_description = rtrim( fgets( STDIN ) );
 
-echo 'What is your name? ';
+echo "\nWhat is your name? ";
 $plugin_author = rtrim( fgets( STDIN ) );
 
 $underscore_name = strtolower( str_replace( ' ', '_', $plugin_name ) );
 $hypen_name      = strtolower( str_replace( ' ', '-', $plugin_name ) );
 
+echo "\n\nUpdating files content...";
 /**
  * Update mu-starter-plugin.php.
  */
@@ -56,7 +57,14 @@ $file_contents = file_get_contents( $path_to_file );
 $file_contents = str_replace( 'mu-starter-plugin', $hypen_name, $file_contents );
 file_put_contents( $path_to_file, $file_contents );
 
+echo "\n\nRenaming files...";
 rename( './source/css/mu-starter-plugin.css', './source/css/' . $hypen_name . '.css' );
 rename( './mu-starter-plugin.php', './' . $hypen_name . '.php' );
 
-echo '\n\nPlugin setup successfully.';
+echo "\n\nInstalling required npm modules...";
+exec("npm install");
+
+echo "\n\nInstalling required composer packages...";
+exec('composer install');
+
+echo "\n\nPlugin setup successfully.";
