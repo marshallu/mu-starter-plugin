@@ -5,7 +5,7 @@ if ( ! file_exists( './mu-starter-plugin.php' ) ) {
 	exit;
 }
 
-echo "Setup starting...\n\n";
+echo "Setup starting...\n";
 
 echo 'What is the name of your plugin? ';
 $plugin_name = trim( fgets( STDIN ) );
@@ -13,16 +13,16 @@ $plugin_name = trim( $plugin_name, '"' );
 
 echo "\nWhat is the description of your plugin? ";
 $plugin_description = trim( fgets( STDIN ) );
-$plugin_name = trim( $plugin_description, '"' );
+$plugin_description = trim( $plugin_description, '"' );
 
 echo "\nWhat is your name? ";
 $plugin_author = trim( fgets( STDIN ) );
-$plugin_name = trim( $plugin_author, '"' );
+$plugin_author = trim( $plugin_author, '"' );
 
 $underscore_name = strtolower( str_replace( ' ', '_', $plugin_name ) );
 $hypen_name      = strtolower( str_replace( ' ', '-', $plugin_name ) );
 
-echo "\n\nUpdating files content...";
+echo "\nUpdating files content...";
 /**
  * Update mu-starter-plugin.php.
  */
@@ -60,26 +60,26 @@ $file_contents = file_get_contents( $path_to_file );
 $file_contents = str_replace( 'mu-starter-plugin', $hypen_name, $file_contents );
 file_put_contents( $path_to_file, $file_contents );
 
-echo "\n\nRenaming files...";
+echo "\nRenaming files...";
 rename( './source/css/mu-starter-plugin.css', './source/css/' . $hypen_name . '.css' );
 rename( './mu-starter-plugin.php', './' . $hypen_name . '.php' );
 
-echo "\n\nInstalling required npm modules...";
+echo "\nInstalling required npm modules...";
 exec("npm install");
 
-echo "\n\nInstalling required composer packages...";
+echo "\nInstalling required composer packages...";
 exec('composer install');
 
 $setup_file = './scripts/setup.php';
 
 if ( file_exists( $setup_file ) ) {
 	if ( unlink( $setup_file ) ) {
-		echo "\n\nSetup file successfully removed.";
+		echo "\nSetup file successfully removed.";
 	}
  }
 
- if ( rmdir('examples') ) {
-	 echo "\n\nScripts directory successfully removed.";
+ if ( rmdir('./scripts') ) {
+	 echo "\nScripts directory successfully removed.";
  }
 
  /**
@@ -95,4 +95,4 @@ $file_contents = preg_replace( "/\r|\n/", "", ',
 }' );
 file_put_contents( $path_to_file, $file_contents );
 
-echo "\n\nPlugin setup successfully.";
+echo "\nPlugin setup successfully.";
