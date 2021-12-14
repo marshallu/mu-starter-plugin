@@ -8,13 +8,16 @@ if ( ! file_exists( './mu-starter-plugin.php' ) ) {
 echo "Setup starting...\n\n";
 
 echo 'What is the name of your plugin? ';
-$plugin_name = rtrim( fgets( STDIN ) );
+$plugin_name = trim( fgets( STDIN ) );
+$plugin_name = trim( $plugin_name, '"' );
 
 echo "\nWhat is the description of your plugin? ";
-$plugin_description = rtrim( fgets( STDIN ) );
+$plugin_description = trim( fgets( STDIN ) );
+$plugin_name = trim( $plugin_description, '"' );
 
 echo "\nWhat is your name? ";
-$plugin_author = rtrim( fgets( STDIN ) );
+$plugin_author = trim( fgets( STDIN ) );
+$plugin_name = trim( $plugin_author, '"' );
 
 $underscore_name = strtolower( str_replace( ' ', '_', $plugin_name ) );
 $hypen_name      = strtolower( str_replace( ' ', '-', $plugin_name ) );
@@ -66,5 +69,30 @@ exec("npm install");
 
 echo "\n\nInstalling required composer packages...";
 exec('composer install');
+
+$setup_file = './scripts/setup.php';
+
+if ( file_exists( $setup_file ) ) {
+	if ( unlink( $setup_file ) ) {
+		echo "\n\nSetup file successfully removed.";
+	}
+ }
+
+ if ( rmdir('examples') ) {
+	 echo "\n\nScripts directory successfully removed.";
+ }
+
+ /**
+ * Update composer.json
+ */
+$path_to_file  = './webpack.mix.js';
+$file_contents = file_get_contents( $path_to_file );
+$file_contents = preg_replace( "/\r|\n/", "", ',
+"scripts": {
+	"setup": [
+		"@php scripts/setup.php"
+	]
+}' );
+file_put_contents( $path_to_file, $file_contents );
 
 echo "\n\nPlugin setup successfully.";
