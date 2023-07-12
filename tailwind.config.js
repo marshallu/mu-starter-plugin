@@ -4,9 +4,8 @@ module.exports = {
   ],
 	purge: {
 		content: [
-			'./source/css/*.css',
-			'./source/css/*/*.css',
 			'./*.php',
+			'./**/*.php',
 		],
 	}
 }
