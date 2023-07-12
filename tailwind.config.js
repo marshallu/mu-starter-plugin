@@ -2,10 +2,9 @@ module.exports = {
   presets: [
     require('@marshallu/marsha-tailwind')
   ],
-	purge: {
-		content: [
-			'./*.php',
-			'./**/*.php',
-		],
-	}
+	darkMode: 'class',
+	content: require('fast-glob').sync([
+		'./*.php',
+		'./**/*.php',
+	]),
 }
