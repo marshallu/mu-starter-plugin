@@ -10,7 +10,7 @@ $plugin_name = text(
 	required: true
 );
 
-$description = text( 'What is the description of your plugin?' );
+$plugin_description = text( 'What is the description of your plugin?' );
 
 $underscore_name = strtolower( str_replace( ' ', '_', $plugin_name ) );
 $hypen_name      = strtolower( str_replace( ' ', '-', $plugin_name ) );
