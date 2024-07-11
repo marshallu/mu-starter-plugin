@@ -7,7 +7,7 @@ use function Laravel\Prompts\progress;
 
 $plugin_name = text(
 	label: 'What is the name of your plugin?',
-	validate: array( 'name' => 'required' )
+	required: true
 );
 
 $description = text( 'What is the description of your plugin?' );
